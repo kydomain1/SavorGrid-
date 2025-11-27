@@ -3,6 +3,30 @@
 // Sample articles data
 const articlesData = [
     {
+        id: 8,
+        title: "Viagogo: Access 50M+ Live Event Listings Globally",
+        excerpt: "Navigate Viagogo’s worldwide marketplace to compare seats, currencies, and delivery options across 50 million live listings every season.",
+        category: "travel",
+        categoryName: "Travel & Accommodation",
+        date: "2025-10-04",
+        image: "https://images.unsplash.com/photo-1462774603919-1d8087e62cad?w=800&h=600&fit=crop&crop=center",
+        author: "Jordan Blake",
+        readTime: "8 min read",
+        featured: true
+    },
+    {
+        id: 7,
+        title: "StubHub: Your Ultimate Ticket Hub for Sports, Concerts & Theater",
+        excerpt: "See how StubHub helps fans lock in the right seats, resale perks, and event upgrades for every sports fixture, concert tour, and theater night.",
+        category: "travel",
+        categoryName: "Travel & Accommodation",
+        date: "2025-10-03",
+        image: "images/11.png",
+        author: "Taylor Mendes",
+        readTime: "8 min read",
+        featured: true
+    },
+    {
         id: 1,
         title: "The Ultimate Guide to Minimalist Fashion in 2025",
         excerpt: "Discover how to build a timeless wardrobe with fewer, better pieces that reflect your personal style and values.",

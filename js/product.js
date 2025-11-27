@@ -142,6 +142,98 @@ const productsData = [
             label: "Very Good",
             text: "Levi's 511 Slim jeans remain a wardrobe staple for good reason. They offer classic styling, reliable quality, and versatile appeal at a reasonable price point."
         }
+    },
+    {
+        id: 4,
+        name: "StubHub Insider Access Pass",
+        category: "travel",
+        categoryName: "Travel & Accommodation",
+        price: 49,
+        originalPrice: 79,
+        discount: "Save up to 38%",
+        rating: 4.9,
+        reviewCount: 2304,
+        images: [
+            "https://images.unsplash.com/photo-1462774603919-1d8087e62cad?w=800&h=600&fit=crop&crop=center",
+            "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=800&h=600&fit=crop&crop=center",
+            "https://images.unsplash.com/photo-1455849318743-b2233052fcff?w=800&h=600&fit=crop&crop=center"
+        ],
+        summary: "Annual membership that unlocks FanProtect concierge support, flexible resale windows, and priority alerts for high-demand games, concerts, and theater runs.",
+        description: "Designed for frequent event-goers, the StubHub Insider Access Pass combines loyalty perks with real-time support. Members receive dedicated chat agents, early access to premium drops, and the ability to relist tickets fee-free up to three times per season.",
+        pros: [
+            "Concierge chat resolves delivery or seating issues in minutes",
+            "Priority notification tier for newly released inventory",
+            "Fee-free relisting credits reduce risk if plans change",
+            "Bundled parking and merch upgrades in select markets",
+            "FanProtect coverage escalates to live agents automatically"
+        ],
+        cons: [
+            "Best value requires attending multiple events per year",
+            "Currently limited to US, UK, and Canada accounts",
+            "Parking bundles vary by venue partner",
+            "Concierge hours shorten on low-volume days"
+        ],
+        specifications: {
+            "Membership Length": "12 months from activation",
+            "Support Channel": "24/7 in-app chat plus priority email",
+            "Ticket Relist Credits": "3 fee-free relists per season",
+            "Exclusive Drops": "48-hour head start on partner presales",
+            "Delivery Coverage": "FanProtect guarantee + instant reissue",
+            "Add-On Marketplace": "Parking, lounge, and merch bundles",
+            "Regions": "United States, Canada, United Kingdom",
+            "Devices": "iOS, Android, desktop web"
+        },
+        verdict: {
+            score: 9.4,
+            label: "Editor’s Pick",
+            text: "StubHub Insider Access Pass is a cost-effective safety net for fans who travel for marquee events. The concierge support, alert speed, and flexible resale credits justify the membership after just two or three major outings."
+        }
+    },
+    {
+        id: 5,
+        name: "Viagogo Global Access Toolkit",
+        category: "travel",
+        categoryName: "Travel & Accommodation",
+        price: 59,
+        originalPrice: 99,
+        discount: "Save 40% this season",
+        rating: 4.8,
+        reviewCount: 1875,
+        images: [
+            "https://images.unsplash.com/photo-1519677100203-a0e668c92439?w=800&h=600&fit=crop&crop=center",
+            "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=800&h=600&fit=crop&crop=center",
+            "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=800&h=600&fit=crop&crop=center"
+        ],
+        summary: "Annual toolkit built for Viagogo power users, bundling concierge messaging, exchange-rate protection, and emergency ticket replacement protocols.",
+        description: "The Viagogo Global Access Toolkit is a membership add-on that centralizes multi-country ticket logistics. Members receive a dedicated support lane, fee-waived relist credits, and proactive delivery monitoring so international trips stay flexible.",
+        pros: [
+            "24/7 multilingual concierge chat within the Viagogo app",
+            "Exchange-rate lock keeps totals predictable for 72 hours",
+            "Fee-free relisting up to three times per event",
+            "Proactive barcode health checks with instant reissues",
+            "Travel bundle recommendations tied to each venue"
+        ],
+        cons: [
+            "Requires Viagogo account in good standing",
+            "Limited availability in some APAC markets",
+            "Best savings realized by frequent travelers",
+            "Concierge queue can lengthen on mega-event days"
+        ],
+        specifications: {
+            "Membership Term": "12 months rolling",
+            "Support Coverage": "24/7 chat + priority email",
+            "Relist Credits": "Up to 6 per membership year",
+            "Currency Protection": "Locks rates for 72 hours",
+            "Delivery Monitoring": "Barcode scanning + courier tracking",
+            "Regions Supported": "North America, Europe, LATAM, select APAC cities",
+            "Device Access": "iOS, Android, desktop web",
+            "Add-On Bundles": "Parking, hospitality, merch preorders"
+        },
+        verdict: {
+            score: 9.1,
+            label: "Great Value",
+            text: "For travelers who lean on Viagogo to stitch multi-city tours together, the Global Access Toolkit pays for itself quickly through exchange-rate locks, relist credits, and white-glove troubleshooting."
+        }
     }
 ];
 
@@ -360,6 +452,32 @@ function getDetailedReview(product) {
             
             <h4>Value Proposition</h4>
             <p>At this price point, the 511 Slim jeans offer excellent value. You're getting authentic Levi's quality and style at a reasonable cost, making them accessible to a wide range of consumers who appreciate classic American denim.</p>
+        `,
+        4: `
+            <h4>Onboarding and Interface</h4>
+            <p>Activating the Insider Access Pass takes less than two minutes in the StubHub app. Once live, a dedicated dashboard tracks upcoming events, delivery statuses, and concierge conversations. The interface also highlights limited-time drops so you can jump into a queue without refreshing multiple tabs.</p>
+            
+            <h4>Concierge Support</h4>
+            <p>Members gain 24/7 chat support with agents who can reroute mobile tickets, swap delivery methods, or reissue QR codes if travel plans change. During sellout nights, the concierge team prioritizes Insider Access Pass holders, shaving crucial minutes off the time it takes to salvage a disrupted entry.</p>
+            
+            <h4>Flexible Resale Credits</h4>
+            <p>The biggest perk is the trio of fee-free relist credits. If friends bail or weather shifts, you can repost seats at market price without absorbing additional seller fees. The platform highlights optimal pricing bands and alerts you when similar listings move, keeping your resale competitive.</p>
+            
+            <h4>Value for Frequent Fans</h4>
+            <p>After two premium events, the membership pays for itself through waived fees and bundled add-ons like lounge access or parking vouchers. Travelers who hop between cities appreciate the proactive notifications that flag venue policy changes before boarding a flight.</p>
+        `,
+        5: `
+            <h4>International Setup</h4>
+            <p>Enrollment happens inside the Viagogo account dashboard, where the Global Access Toolkit layers a planning pane onto your existing orders. The onboarding wizard prompts you to store traveler IDs, preferred currencies, and delivery preferences so support agents can intervene without repeat questions.</p>
+            
+            <h4>Concierge & Monitoring</h4>
+            <p>Toolkit members gain a dedicated chat lane staffed by multilingual agents who can coordinate courier pickups, update venue will-call lists, or resend QR codes moments after a disruption. Behind the scenes, Viagogo scans barcodes every few hours and flags anomalies before you reach an arena.</p>
+            
+            <h4>Financial Safeguards</h4>
+            <p>The exchange-rate lock is the sleeper feature: you can shop across three currencies while Viagogo holds the best available rate for 72 hours, making it easier to assemble multi-leg trips. Fee-free relist credits help you offload seats when plans pivot, and the toolkit suggests market-aligned pricing bands to accelerate sales.</p>
+            
+            <h4>Travel Bundles</h4>
+            <p>Because the add-on syncs with Viagogo’s travel partners, you receive curated parking, hospitality, and merch bundles that match each venue’s policies. The recommendations update dynamically as more data flows in, ensuring you only see options that fit your ticket tier.</p>
         `
     };
     
