@@ -1,0 +1,13 @@
+.git/
+.github/
+node_modules/
+wrangler.toml
+package.json
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+README.md
+*.md
+*.mdx
+*.log
+
