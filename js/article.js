@@ -1,16 +1,30 @@
 // Article page functionality
 document.addEventListener('DOMContentLoaded', function() {
     const urlParams = new URLSearchParams(window.location.search);
-    const articleId = parseInt(urlParams.get('id'));
+    const articleTitle = urlParams.get('title');
+    const idParam = urlParams.get('id');
+    const articleId = idParam ? parseInt(idParam) : null;
+
+    const hasArticleParam = !!(articleTitle || articleId);
     
-    if (articleId && window.SavorGrid) {
-        loadArticleContent(articleId);
-    } else if (articleId) {
+    if (hasArticleParam && window.SavorGrid && window.SavorGrid.articlesData) {
+        const resolvedId = resolveArticleId(articleTitle, articleId);
+        if (resolvedId) {
+            loadArticleContent(resolvedId);
+        } else {
+            showArticleNotFound();
+        }
+    } else if (hasArticleParam) {
         // Wait for SavorGrid to be available
         const checkSavorGrid = setInterval(() => {
             if (window.SavorGrid && window.SavorGrid.articlesData) {
                 clearInterval(checkSavorGrid);
-                loadArticleContent(articleId);
+                const resolvedId = resolveArticleId(articleTitle, articleId);
+                if (resolvedId) {
+                    loadArticleContent(resolvedId);
+                } else {
+                    showArticleNotFound();
+                }
             }
         }, 100);
         
@@ -25,6 +39,23 @@ document.addEventListener('DOMContentLoaded', function() {
         showArticleNotFound();
     }
 });
+
+function resolveArticleId(articleTitle, fallbackId) {
+    if (!window.SavorGrid || !window.SavorGrid.articlesData) return null;
+    const { articlesData } = window.SavorGrid;
+
+    if (articleTitle) {
+        const foundByTitle = articlesData.find(a => a.title === articleTitle);
+        if (foundByTitle) return foundByTitle.id;
+    }
+
+    if (fallbackId) {
+        const foundById = articlesData.find(a => a.id === fallbackId);
+        if (foundById) return foundById.id;
+    }
+
+    return null;
+}
 
 function loadArticleContent(articleId) {
     const { articlesData } = window.SavorGrid;
@@ -98,6 +129,7 @@ function getFullArticleContent(article) {
     // Generate detailed article content based on category and title
     const stubhubLink = `<mark class="affiliate-highlight"><a href="https://www.linkhaitao.com/index.php?mod=lhdeal&track=29c12V2RK_bzISWv3iB_aDM2K5Lm5UGovzr8lDwOl32NYX4n9645NTrib4REzvhPEIop_b_bU3k2&new=https%3A%2F%2Fwww.stubhub.com%2F" target="_blank" rel="nofollow noopener" class="affiliate-link">StubHub</a></mark>`;
     const viagogoLink = `<mark class="affiliate-highlight"><a href="https://www.linkhaitao.com/index.php?mod=lhdeal&track=0426B_ap3cqDTeoyCR_bcobkgV5O3DHq5uSNSeK9yhBy_adFDcAnmdC8JtaTH6RK8KSHmxR&new=https%3A%2F%2Fwww.viagogo.com%2F" target="_blank" rel="nofollow noopener" class="affiliate-link">viagogo</a></mark>`;
+    const petstockLink = `<mark class="affiliate-highlight"><a href="https://www.linkhaitao.com/index.php?mod=lhdeal&track=f59dmtTfu35dR_av99Nto9MlCNvX5XS8IaIOfCT0xg7qBY4Lit65QOlX6PVu01ratqhMQXCpf&new=https%3A%2F%2Fwww.petstock.com.au%2F" target="_blank" rel="nofollow noopener" class="affiliate-link">petstock</a></mark>`;
     const contentMap = {
         8: {
             content: `
@@ -1073,6 +1105,94 @@ function getFullArticleContent(article) {
                 
                 <p>Remember, the best coffee is the one you enjoy. Experiment with different origins, roasts, and brewing methods to discover what brings you satisfaction in your daily cup.</p>
             `
+        },
+        9: { // Shop Be Frank Dog Food – Premium Nutrition for Your Pup
+            content: `
+                <h2>Why Be Frank Dog Food at ${petstockLink} Feels Different</h2>
+                <p>Walk into an Australian ${petstockLink} store or browse ${petstockLink} online and you quickly see that Be Frank dog food is built for real dogs with real routines, not “perfect” pets from TV ads. The Be Frank range presented on ${petstockLink} focuses on digestible meat proteins, simple vegetables and clear labels you can understand in a single scroll. For many first‑time shoppers on ${petstockLink}, switching to Be Frank is the moment they finally feel confident about what goes into their dog’s bowl.</p>
+                
+                <p>Unlike generic supermarket kibble, Be Frank leans on slow‑cooked meats and visible ingredients that you can cross‑check directly on ${petstockLink} before you buy. Because ${petstockLink} curates the range for Australian lifestyles, you’ll see options that suit apartment pups, big backyard dogs and ageing companions all within the same ${petstockLink} catalog. Combine that with autoship and delivery tools from ${petstockLink}, and it becomes much easier to maintain a consistent feeding plan instead of grabbing whatever bag happens to be on sale.</p>
+                
+                <img src="images/6.jpg" alt="Happy dog enjoying Be Frank Complete Adult Formula from a bowl" class="article-image">
+                <p class="image-caption">Be Frank recipes on ${petstockLink} focus on digestible proteins and honest ingredient decks your vet can easily review.</p>
+                
+                <h3>What You Notice When You Shop Be Frank via ${petstockLink}</h3>
+                <p>The Be Frank shelf on ${petstockLink} is designed to remove guesswork for busy dog parents. As you compare recipes on ${petstockLink}, look for these details:</p>
+                <ul>
+                    <li>Clear front‑of‑pack panels on ${petstockLink} that highlight meat‑first formulations instead of vague “meat by‑products”.</li>
+                    <li>Age and size filters on ${petstockLink} so you can narrow Be Frank recipes for puppies, adults and seniors in a few clicks.</li>
+                    <li>Feeding guides shown directly on each Be Frank listing within ${petstockLink}, letting you adjust grams per day by weight, not guesswork.</li>
+                    <li>Customer reviews on ${petstockLink} that talk about coat shine, stool quality and energy levels after moving to Be Frank.</li>
+                    <li>Bundle suggestions on ${petstockLink} that pair Be Frank dry food with treats or toppers, ideal for picky eaters.</li>
+                </ul>
+                
+                <p>Many owners start by using ${petstockLink} to compare Be Frank against other premium labels and realise the price‑per‑feed is more competitive than expected. With subscription tools from ${petstockLink}, you can lock in your preferred Be Frank flavour and let ${petstockLink} handle refills before the bag runs empty. Multi‑dog households also appreciate how their ${petstockLink} account keeps different Be Frank formulas, bag sizes and delivery dates organised in one place.</p>
+                
+                <img src="https://images.unsplash.com/photo-1543462652-1bf75c0b2c2d?w=800&h=500&fit=crop&crop=center" alt="Owner pouring premium dry dog food into bowls for two dogs" class="article-image">
+                <p class="image-caption">Using autoship on ${petstockLink} means each dog’s Be Frank formula arrives on time, matched to their intake.</p>
+                
+                <h3>A Real‑Life Be Frank Feeding Routine with ${petstockLink}</h3>
+                <p>Most dog parents who shop Be Frank through ${petstockLink} follow a simple routine. Mornings start with Be Frank dry food from a recent ${petstockLink} order, weighed on a kitchen scale and sometimes topped with a spoon of wet food also sourced on ${petstockLink}. Evenings might include Be Frank treats you added to the same ${petstockLink} cart for training, enrichment toys or calm‑down chews.</p>
+                
+                <p>Because every Be Frank bag on ${petstockLink} includes a detailed feeding chart, you can gradually adjust portions as your vet recommends weight changes. Many people keep a screenshot from ${petstockLink} pinned to the fridge, while others bookmark their favourite Be Frank product page in the ${petstockLink} app. However you manage it, ${petstockLink} makes it easier to stay aligned with the brand’s intended feeding schedule instead of improvising day by day.</p>
+                
+                <ul>
+                    <li>Use ${petstockLink} order history to track which Be Frank flavour your dog finishes fastest.</li>
+                    <li>Share your ${petstockLink} invoices with your vet so they can see the exact Be Frank recipe and batch size you’re feeding.</li>
+                    <li>Adjust your autoship cadence on ${petstockLink} as seasons change and your dog’s activity level shifts.</li>
+                    <li>Chat with ${petstockLink} support if you need to pause or bring forward a Be Frank delivery around holidays.</li>
+                    <li>Watch for seasonal Be Frank promotions highlighted on the ${petstockLink} homepage during major pet events.</li>
+                </ul>
+                
+                <h3>Product Spotlight: Be Frank Complete Adult Formula on ${petstockLink}</h3>
+                <div class="product-card">
+                    <div class="product-header">
+                        <img src="images/产品.jpg" alt="Be Frank Complete Adult Formula dog food pack" class="product-image">
+                        <div class="product-info">
+                            <h4>Be Frank Complete Adult Formula</h4>
+                            <div class="product-rating">
+                                <span class="stars">★★★★★</span>
+                                <span>4.8/5 (430+ ratings on ${petstockLink})</span>
+                            </div>
+                            <div class="product-price">$32 – $109 (bag sizes via ${petstockLink})</div>
+                        </div>
+                    </div>
+                    <p class="product-description">This Be Frank recipe, stocked and delivered by ${petstockLink}, centres meat‑first protein, balanced fats and fibre to support digestion, coat condition and all‑day energy for adult dogs.</p>
+                    <div class="product-pros-cons">
+                        <div class="pros">
+                            <h5>✓ Pros</h5>
+                            <ul>
+                                <li>Transparent ingredient list you can inspect on ${petstockLink} before committing.</li>
+                                <li>Multiple bag sizes listed on ${petstockLink} so you can trial a small bag before buying bulk.</li>
+                                <li>Reliable stock thanks to ${petstockLink}’s national logistics network.</li>
+                            </ul>
+                        </div>
+                        <div class="cons">
+                            <h5>✗ Considerations</h5>
+                            <ul>
+                                <li>Premium price compared with no‑name kibble outside ${petstockLink}.</li>
+                                <li>Popular flavours may sell out quickly during ${petstockLink} promotion periods.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="product-cta">
+                        <a href="product.html?id=6" class="btn-primary" target="_blank" rel="noopener">
+                            <i class="fas fa-bone"></i> View Full Be Frank Review
+                        </a>
+                        <a href="https://www.linkhaitao.com/index.php?mod=lhdeal&track=f59dmtTfu35dR_av99Nto9MlCNvX5XS8IaIOfCT0xg7qBY4Lit65QOlX6PVu01ratqhMQXCpf&new=https%3A%2F%2Fwww.petstock.com.au%2F" class="btn-secondary" target="_blank" rel="nofollow noopener">
+                            Shop Be Frank at petstock
+                        </a>
+                    </div>
+                </div>
+                
+                <img src="https://images.unsplash.com/photo-1534361960057-19889db9621e?w=800&h=500&fit=crop&crop=center" alt="Owner checking nutrition label on a bag of dog food" class="article-image">
+                <p class="image-caption">Cross‑check the Be Frank nutrition panel on ${petstockLink} with your vet’s recommendations before you switch.</p>
+                
+                <h3>Getting the Most from Be Frank and ${petstockLink}</h3>
+                <p>If you’re transitioning from another brand, start by using ${petstockLink} to line up Be Frank’s guaranteed analysis with your dog’s current food. Gradually mix Be Frank into the old diet over 7–10 days while noting changes in stool, coat and appetite alongside your ${petstockLink} order history. After a few weeks, many owners report that their dog’s energy levels are steadier and that ordering through ${petstockLink} has turned feeding time into a calm, predictable ritual.</p>
+                
+                <p>In the long term, think of Be Frank as the nutrition backbone and ${petstockLink} as the logistics partner that keeps everything running smoothly. Let Be Frank handle the recipe science, and let ${petstockLink} handle reminders, deliveries and deals so you can spend more time on walks, training games and the quiet moments that make life with a dog worth it.</p>
+            `
         }
     };
 
@@ -1157,7 +1277,7 @@ function createRelatedArticleCard(article) {
     };
     
     return `
-        <a href="article.html?id=${article.id}" class="article-card fade-in">
+        <a href="article.html?title=${encodeURIComponent(article.title)}" class="article-card fade-in">
             <img src="${article.image}" alt="${article.title}" class="article-image" 
                  onerror="this.src='https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800&h=600&fit=crop&crop=center'">
             <div class="article-content">

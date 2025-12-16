@@ -3,6 +3,18 @@
 // Sample articles data
 const articlesData = [
     {
+        id: 9,
+        title: "Shop Be Frank Dog Food – Premium Nutrition for Your Pup",
+        excerpt: "Discover why Australian dog parents are choosing Be Frank dog food at petstock for fresher ingredients, clearer labels, and nutrition that actually fits their pup’s real-life routine.",
+        category: "food",
+        categoryName: "Food & Beverage",
+        date: "2025-10-02",
+        image: "https://images.unsplash.com/photo-1534361960057-19889db9621e?w=800&h=600&fit=crop&crop=center",
+        author: "Lily Harper",
+        readTime: "9 min read",
+        featured: true
+    },
+    {
         id: 8,
         title: "Viagogo: Access 50M+ Live Event Listings Globally",
         excerpt: "Navigate Viagogo’s worldwide marketplace to compare seats, currencies, and delivery options across 50 million live listings every season.",
@@ -146,7 +158,7 @@ function formatDate(dateString) {
 
 function createArticleCard(article) {
     return `
-        <a href="article.html?id=${article.id}" class="article-card fade-in">
+        <a href="article.html?title=${encodeURIComponent(article.title)}" class="article-card fade-in">
             <img src="${article.image}" alt="${article.title}" class="article-image" onerror="this.src='https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800&h=600&fit=crop&crop=center'">
             <div class="article-content">
                 <div class="article-meta">
