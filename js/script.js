@@ -3,6 +3,19 @@
 // Sample articles data
 const articlesData = [
     {
+        id: 10,
+        title: "Why I Switched to Regenerative Coffee and Never Looked Back",
+        slug: "why-i-switched-to-regenerative-coffee-and-never-looked-back",
+        excerpt: "A personal journey into the world of regenerative organic coffee — how one small change in my morning routine reshaped the way I think about what I drink.",
+        category: "food",
+        categoryName: "Food & Beverage",
+        date: "2026-03-24",
+        image: "images/heirloom-banner.png",
+        author: "Claire Whitfield",
+        readTime: "9 min read",
+        featured: true
+    },
+    {
         id: 9,
         title: "Shop Be Frank Dog Food – Premium Nutrition for Your Pup",
         excerpt: "Discover why Australian dog parents are choosing Be Frank dog food at petstock for fresher ingredients, clearer labels, and nutrition that actually fits their pup’s real-life routine.",
@@ -156,9 +169,23 @@ function formatDate(dateString) {
     });
 }
 
+function slugifyArticleTitle(title) {
+    return String(title || '')
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-+|-+$/g, '');
+}
+
+function getArticleSlug(article) {
+    return article.slug || slugifyArticleTitle(article.title);
+}
+
 function createArticleCard(article) {
+    const articleSlug = getArticleSlug(article);
     return `
-        <a href="article.html?title=${encodeURIComponent(article.title)}" class="article-card fade-in">
+        <a href="article.html?slug=${encodeURIComponent(articleSlug)}" class="article-card fade-in">
             <img src="${article.image}" alt="${article.title}" class="article-image" onerror="this.src='https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800&h=600&fit=crop&crop=center'">
             <div class="article-content">
                 <div class="article-meta">
@@ -397,5 +424,7 @@ window.SavorGrid = {
     categoryConfig,
     formatDate,
     createArticleCard,
-    createPagination
+    createPagination,
+    slugifyArticleTitle,
+    getArticleSlug
 };
